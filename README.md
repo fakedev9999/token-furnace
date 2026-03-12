@@ -16,8 +16,6 @@
 
 <div align="center">
 
-### 토큰 소각로
-
 > **"An AI that mass-produces increasingly unhinged creative writing, scores itself, and spirals upward. It gets weirder every round. All outputs accumulate into one massive document."**
 
 <p>
@@ -41,12 +39,12 @@ The motivation: roughly 56% of your weekly Claude tokens are going to waste. Thi
 
 Single-file Python. Zero dependencies. Infinite rounds. One growing artifact.
 
-## Architecture (구조)
+## Architecture
 
 ```
     ┌──────────┐     ┌──────────┐     ┌──────────┐
     │GENERATOR │────▶│ EXECUTOR │────▶│  JUDGE   │
-    │  생성기  │     │  실행기  │     │  심사관  │
+    │          │     │          │     │          │
     └────▲─────┘     └──────────┘     └────┬─────┘
          │                                  │
          └──────── FURNACE STATE ◀──────────┘
@@ -56,7 +54,7 @@ Single-file Python. Zero dependencies. Infinite rounds. One growing artifact.
                          ▼
                     ┌──────────┐
                     │ ARTIFACT │
-                    │소각 기록물│
+                    │          │
                     └──────────┘
 ```
 
@@ -93,24 +91,24 @@ The Generator creates prompts informed by the Furnace State — recent scores, s
   [Ctrl+C for graceful shutdown]
 ```
 
-## How It Burns (작동 방식)
+## How It Burns
 
-### Generator (생성기)
+### Generator
 - Crafts a creative prompt optimized for token burn, weirdness, and meaningfulness
 - Learns from previous scores, judge feedback, and pattern history
 - Escalates weirdness tier automatically as rounds progress
 
-### Executor (실행기)
+### Executor
 - Executes the prompt with maximum creative latitude — minimum 2,000 words, no ceiling
 - Threads narrative elements from prior rounds for emergent continuity
 - Never abbreviates, never summarizes, never says "etc."
 
-### Judge (심사관)
+### Judge
 - Scores on three axes: **token burn** (×0.3), **meaningfulness** (×0.3), **weirdness** (×0.4)
 - Classifies prompt patterns as `REUSE`, `EVOLVE`, or `ABANDON`
 - Extracts recurring elements to build cross-round narrative threads
 
-## Weirdness Escalation (이상함 단계)
+## Weirdness Escalation
 
 | Rounds | Tier | Description |
 |--------|------|-------------|
@@ -121,14 +119,14 @@ The Generator creates prompts informed by the Furnace State — recent scores, s
 
 ```
 ╔══════════════════════════════════════════════════════╗
-║  ⚠  WARNING / 경고                                  ║
+║  ⚠  WARNING                                          ║
 ║                                                      ║
 ║  This tool burns tokens on purpose.                  ║
 ║  It will not stop until you tell it to.              ║
 ║  Each round = 3 Claude API calls.                    ║
 ║  The author is not responsible for your bill.        ║
 ║                                                      ║
-║  당신은 경고를 받았습니다.                            ║
+║  You have been warned.                                ║
 ╚══════════════════════════════════════════════════════╝
 ```
 
@@ -147,13 +145,13 @@ python3 token-furnace.py --opus --rounds 10
 
 **Requirements:** `python3` and the [`claude`](https://docs.anthropic.com/en/docs/claude-code) CLI, installed and authenticated. Zero pip dependencies.
 
-## Sample Output (출력 예시)
+## Sample Output
 
 > The Department of Temporal Cartography had been mapping the coastline of next Thursday for six months when they discovered that Tuesdays, when viewed from sufficient altitude, formed a perfect Fibonacci spiral. Senior Cartographer Yun-seo pinned the finding to the corkboard in the break room, between a takeout menu from a restaurant that hadn't opened yet and a photograph of the office Christmas party from 1987 that somehow included everyone currently on staff. The discovery was, of course, filed under both "Mathematics" and "Weather," because in the Department, topology was a matter of opinion and Thursdays had their own climate.
 
 See [`samples/sample-artifact.md`](samples/sample-artifact.md) for a full multi-round example.
 
-## The Artifact (소각 기록물)
+## The Artifact
 
 Every round appends to `~/token-furnace-output.md`. The file grows continuously:
 
@@ -187,13 +185,13 @@ Every round appends to `~/token-furnace-output.md`. The file grows continuously:
 
 The artifact is the product. It's a record of the furnace's own evolution.
 
-## Philosophy (제작 철학)
+## Philosophy
 
 What if iteration was the product? What if the process of getting better at generating was itself the output? Token Furnace is a closed-loop creative engine. The artifact it produces is a record of its own evolution — each round building on the last, learning what works, abandoning what doesn't, spiraling toward increasingly unhinged but internally coherent creative output.
 
 ```
 ─────────────────────────────────
-토큰 소각로 · Token Furnace · v2.0
+Token Furnace · v2.0
 built by the fire, for the fire
 ─────────────────────────────────
 ```

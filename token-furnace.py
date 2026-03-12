@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Token Furnace v2 — Self-Evolving Token Burner (토큰 소각로)
+Token Furnace v2 — Self-Evolving Token Burner
 
 An RL-like self-play loop: Generate -> Execute -> Judge -> Improve -> Repeat.
 All outputs accumulate into ~/token-furnace-output.md.
